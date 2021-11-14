@@ -39,8 +39,6 @@ void setup() {
   Serial.begin(115200);  //Initialize serial
   sensorSuhu.begin(); 
 
-  uint32_t currentFrequency; 
-
   if (! ina219.begin()) { 
     Serial.println("Failed to find INA219 chip");
  while (1) { delay(10); }
@@ -129,7 +127,7 @@ void loop() {
  power_mW = ina219.getPower_mW();
  loadvoltage = busvoltage + (shuntvoltage / 1000);
  
-  suhuSekarang = ambilSuhu();
+ suhuSekarang = ambilSuhu();
 
   tombol_relay();
   autoRelay_suhu();
