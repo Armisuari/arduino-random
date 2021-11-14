@@ -13,13 +13,6 @@ OneWire oneWire(ONE_WIRE_BUS);
 DallasTemperature sensorSuhu(&oneWire);
  
 float suhuSekarang;
-
-// Timer variables
-unsigned long lastTime = 0;
-unsigned long timerDelay = 30000;
-
-float R1 = 30000.0;
-float R2 = 7500.0;
  
 const int pinRelay[4] = {1, 2, 3, 4}; //ganti nomor pin sesuai degan yang digunakan di masing - masing channel relay
 const int pinTombol[4] = {5, 6, 7, 8}; //ganti nomor pin sesuai degan yang digunakan di masing - masing tombol
