@@ -13,6 +13,7 @@ LiquidCrystal_I2C lcd(0x27,16,2);
 
 float suhuAtas, suhuBawah;
 char data = 0;
+int a,b;
             
 void setup() {
   Serial.begin(9600);     
@@ -34,12 +35,33 @@ void loop(){
   suhuAtas  = (sensors.getTempCByIndex(0));
   suhuBawah = (sensors.getTempCByIndex(1));
 
-    if(suhuAtas >= 20){
-    digitalWrite(2, LOW); //nyalakan relay
-    }
-    else if(suhuAtas <= 16){      
-    digitalWrite(2, HIGH); //matikan relay
-    } 
+    //if(suhuAtas >= 20){
+    //digitalWrite(2, LOW); //nyalakan relay
+    //}
+    //else if(suhuAtas <= 16){      
+    //digitalWrite(2, HIGH); //matikan relay
+    //} 
+
+    if (suhuAtas >= 20) 
+       {
+         digitalWrite(2, LOW);
+         a = 1;
+       }
+    
+    if (suhuAtas >16 && suhuAtas <20) 
+       {
+        if (a == 1)
+          {
+            digitalWrite(2, LOW);
+          }
+       }
+
+    if (suhuAtas <= 16) 
+       {
+         digitalWrite(2, HIGH);
+         a = 0;
+       }
+
     else if(suhuBawah <= 45){
     digitalWrite(3, LOW); 
     }
